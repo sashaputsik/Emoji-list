@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Emoji list
-//
-//  Created by Sasha Putsikovich on 07.04.2020.
-//  Copyright © 2020 Sasha Putsikovich. All rights reserved.
-//
-
 import UIKit
 import CoreData
 

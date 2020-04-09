@@ -15,6 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="5jD-J6-ucm">
+                            <rect key="frame" x="0.0" y="99.5" width="375" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="mLO-hm-7WZ" customClass="TableViewCell" customModule="Emoji_list" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
@@ -47,6 +52,7 @@
                                 <connections>
                                     <outlet property="emojiLabel" destination="ayF-Ud-hwJ" id="dP4-bZ-8A2"/>
                                     <outlet property="emojiName" destination="Qc9-Vj-g9k" id="7GR-Eh-ggj"/>
+                                    <segue destination="bCn-vv-418" kind="show" id="4fT-gJ-sKH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,14 +65,71 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="rKh-iv-8Yi">
                             <connections>
                                 <action selector="addEmoji:" destination="aLR-fa-TSw" id="waj-Ki-sNZ"/>
-                                <segue destination="Qe6-7d-gM1" kind="show" id="vd5-ef-SF3"/>
+                                <segue destination="Qe6-7d-gM1" kind="show" id="BCD-68-Ajn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQ9-ER-kFV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="e8g-Pa-OX2">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="1288.8" y="112.89355322338831"/>
+        </scene>
+        <!--Selected Emoji View Controller-->
+        <scene sceneID="KMX-5q-oZ4">
+            <objects>
+                <viewController storyboardIdentifier="SelectedEmojiViewController" id="bCn-vv-418" customClass="SelectedEmojiViewController" customModule="Emoji_list" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9qN-bF-lq3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29O-N8-tFL">
+                                <rect key="frame" x="133.5" y="114" width="108" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSk-sH-hQS">
+                                <rect key="frame" x="147" y="284" width="81" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eyh-CI-cBp">
+                                <rect key="frame" x="16" y="366" width="343" height="219"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="29O-N8-tFL" firstAttribute="top" secondItem="E7a-Tg-bqv" secondAttribute="top" constant="18" id="88I-qO-2gP"/>
+                            <constraint firstItem="eyh-CI-cBp" firstAttribute="leading" secondItem="E7a-Tg-bqv" secondAttribute="leading" constant="16" id="BDI-Wc-6pp"/>
+                            <constraint firstItem="JSk-sH-hQS" firstAttribute="centerX" secondItem="9qN-bF-lq3" secondAttribute="centerX" id="ECg-er-ZsA"/>
+                            <constraint firstItem="JSk-sH-hQS" firstAttribute="top" secondItem="29O-N8-tFL" secondAttribute="bottom" constant="50" id="FFr-fV-bNU"/>
+                            <constraint firstItem="E7a-Tg-bqv" firstAttribute="trailing" secondItem="eyh-CI-cBp" secondAttribute="trailing" constant="16" id="FdC-oY-OtT"/>
+                            <constraint firstItem="E7a-Tg-bqv" firstAttribute="bottom" secondItem="eyh-CI-cBp" secondAttribute="bottom" constant="82" id="OkU-cf-iJq"/>
+                            <constraint firstItem="eyh-CI-cBp" firstAttribute="centerX" secondItem="9qN-bF-lq3" secondAttribute="centerX" id="bek-he-Wwq"/>
+                            <constraint firstItem="29O-N8-tFL" firstAttribute="centerX" secondItem="9qN-bF-lq3" secondAttribute="centerX" id="fPT-mA-Uwf"/>
+                            <constraint firstItem="eyh-CI-cBp" firstAttribute="top" secondItem="JSk-sH-hQS" secondAttribute="bottom" constant="41" id="mAR-5p-pRW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E7a-Tg-bqv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CDF-4L-ov9"/>
+                    <connections>
+                        <outlet property="emojiLabel" destination="29O-N8-tFL" id="oWY-My-zDS"/>
+                        <outlet property="informationOfEmotiTextView" destination="eyh-CI-cBp" id="LXN-CD-SGX"/>
+                        <outlet property="nameOfEmojiLabel" destination="JSk-sH-hQS" id="GFj-lF-3hE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MEZ-C6-jPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1280.8" y="768.66566716641682"/>
         </scene>
         <!--Added View Controller-->
         <scene sceneID="x0c-j0-28i">
@@ -77,43 +140,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emoji" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bch-Ib-AfA">
-                                <rect key="frame" x="16" y="160" width="343" height="34"/>
+                                <rect key="frame" x="16" y="212" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ixr-uo-zYy">
-                                <rect key="frame" x="16" y="243" width="343" height="34"/>
+                                <rect key="frame" x="16" y="295" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-yn-gwD">
-                                <rect key="frame" x="139" y="66" width="80" height="41"/>
+                                <rect key="frame" x="139" y="118" width="80" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" red="0.1921314895" green="0.19217148419999999" blue="0.19212898610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ented emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAk-vA-l2u">
-                                <rect key="frame" x="16" y="131" width="90" height="21"/>
+                                <rect key="frame" x="16" y="183" width="90" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ented name of added emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2P-KH-4nM">
-                                <rect key="frame" x="16" y="214" width="210" height="21"/>
+                                <rect key="frame" x="16" y="266" width="210" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ented information of emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8b-8Y-CN7">
-                                <rect key="frame" x="16" y="297" width="201" height="21"/>
+                                <rect key="frame" x="16" y="349" width="201" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gvd-4B-HVm">
-                                <rect key="frame" x="16" y="326" width="343" height="34"/>
+                                <rect key="frame" x="16" y="378" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -143,7 +206,7 @@
                     <navigationItem key="navigationItem" id="qwU-4f-xMT">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="1j4-K1-L45">
                             <connections>
-                                <action selector="addedEmoji:" destination="Qe6-7d-gM1" id="NC0-vW-u88"/>
+                                <action selector="addedEmoji:" destination="Qe6-7d-gM1" id="OZ2-Qe-gcW"/>
                                 <segue destination="mi5-uc-VqO" kind="unwind" unwindAction="addedEmoji:" id="cvX-UH-MTx"/>
                             </connections>
                         </barButtonItem>
@@ -157,21 +220,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m84-G3-NSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mi5-uc-VqO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2064.8000000000002" y="112.89355322338831"/>
+            <point key="canvasLocation" x="3000.8000000000002" y="112.89355322338831"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="33w-cN-qDj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E00-XM-T7B" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O83-C9-pIn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="O83-C9-pIn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.35433718559999999" green="0.71604257819999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" red="0.35433718559999999" green="0.71604257819999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
